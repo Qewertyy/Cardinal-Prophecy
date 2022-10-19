@@ -1,0 +1,155 @@
+﻿@model HeartAttackApp.Models.PatientModel
+@{
+    ViewBag.Title = "Add Patient Info";
+}
+<html>
+    <head>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="shortcut icon" href="/icon-modified.png" type="image/x-icon" />
+    </head>
+<style>
+    /*Sign Link hover*/
+    .signbtnhover:hover {
+        text-decoration: underline #FF323A;
+    }
+    /* CSS */
+    .button-24 {
+        background: #FF323A;
+        border: 1px solid #FF323A;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 16px;
+        min-height: 40px;
+        outline: 0;
+        padding: 12px 14px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+    }
+
+        .button-24:hover,
+        .button-24:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: #FF4742;
+        }
+
+        .button-24:active {
+            opacity: .5;
+        }
+
+    .gobackbtn {
+        background: #FFF;
+        border: 1px solid #FF323A;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FF323A;
+        cursor: pointer;
+        display: inline-block;
+        font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 16px;
+        min-height: 40px;
+        outline: 0;
+        padding: 12px 14px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+    }
+
+        .gobackbtn:hover,
+        .gobackbtn:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: #FFF;
+            background: #FF4742;
+
+        }
+
+        .gobackbtn:active {
+            opacity: .5;
+        }
+
+    .card {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+</style>
+<body>
+<form method="post" id="frmInfo" asp-controller="Patient" asp-action="PatientInfo">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div id="datainput">
+        <h2 class="text-center pt-5" style="color:#FF323A;">Cardinal Prophecy</h2>&nbsp;
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <h4 class="text-center text-black ">Patient Info</h4>&nbsp;
+                    <div class="form-group">
+                        <input type="number" placeholder="Sugar Level" style="box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;" type="text" asp-for=SugarLvl  class="form-control" />
+                        <span asp-validation-for=SugarLvl class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input placeholder="Blood Pressure" style="box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;" type="text" asp-for="BloodPressure" class="form-control" />
+                        <span asp-validation-for="BloodPressure" class="text-danger"></span>
+                    </div><br />
+                    <div class="form-group">
+                        <input placeholder="Chlorestrol Level" style="box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;" type="text" asp-for="ChlorestrolLvl" class="form-control" />
+                        <span asp-validation-for="ChlorestrolLvl" class="text-danger"></span>
+                    </div>
+
+                    <br />
+                    <div class="form-group; text-right">
+                        <input type="submit" id="btnAddInfo" style="justify-content:right;" onclick="return IsFormValid();" value="Predict" Class="button-24" />
+                        <input type="button" style="justify-content:right;" onclick="history.back()" value="Go Back" Class="gobackbtn" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
+@{
+    if (TempData["Message"] != null)
+    {
+    <script>
+       alert('@TempData["Message"]');
+    </script>
+    }
+}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+    function IsFormValid() {
+        var isTrue = true;
+        //debugger;
+        if (!$("#frmInfo").valid()) {
+            isTrue = false;
+        }
+        return isTrue;
+    }
+</script>

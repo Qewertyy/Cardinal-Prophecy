@@ -1,0 +1,157 @@
+﻿@model HeartAttackApp.Models.UserProfile
+@{
+    ViewBag.Title = "Add Admin Module";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/icon-modified.png" type="image/x-icon" />
+    <style>
+        .gobackbtn {
+            background: #FFF;
+            border: 1px solid #FF323A;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+            box-sizing: border-box;
+            color: #FF323A;
+            cursor: pointer;
+            display: inline-block;
+            font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 16px;
+            min-height: 40px;
+            outline: 0;
+            padding: 12px 14px;
+            text-align: center;
+            text-rendering: geometricprecision;
+            text-transform: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+        }
+
+            .gobackbtn:hover,
+            .gobackbtn:active {
+                background-color: initial;
+                background-position: 0 0;
+                color: #FFF;
+                background: #FF4742;
+            }
+
+            .gobackbtn:active {
+                opacity: .5;
+            }
+        /*Sign Link hover*/
+        .signbtnhover:hover {
+            text-decoration: underline #FF323A;
+        }
+        /* CSS */
+        .button-24 {
+            background: #FF323A;
+            border: 1px solid #FF323A;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 16px;
+            min-height: 40px;
+            outline: 0;
+            padding: 12px 14px;
+            text-align: center;
+            text-rendering: geometricprecision;
+            text-transform: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+        }
+
+            .button-24:hover,
+            .button-24:active {
+                background-color: initial;
+                background-position: 0 0;
+                color: #FF4742;
+            }
+
+            .button-24:active {
+                opacity: .5;
+            }
+
+        .card {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .form-group > input{
+            box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;   
+        }
+
+        .form-group > select {
+            box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <form asp-action="AddAdmin" id="frmReg1">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div id="signup">
+            <h2 class="text-center pt-5" style="color:#FF323A;">Cardinal Prophecy - Admin Module</h2>&nbsp;
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <h4 class="text-center text-black ">Add an Admin</h4>&nbsp;
+                        <div class="form-group">
+                            <label asp-for="EmailID" class="text-black">E-Mail Address</label><br />
+                            <input type="email" asp-for="EmailID" id="txtEmail" class="form-control" />
+                            <span asp-validation-for="EmailID" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UserName" class="text-black">User Name</label><br />
+                            <input type="text" asp-for="UserName" id="txtPwd" class="form-control" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="form-group; text-left">
+                            <input type="submit" id="btnRegistration" style="justify-content:left;" onclick="return IsFormValid();" value="Add Admin" Class="button-24" />
+                            <input type="button" style="justify-content:left;" onclick="history.back()" value="Go Back" Class="gobackbtn" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+@{
+    if (TempData["Message"] != null)
+    {
+    <script>
+                    alert('@TempData["Message"]');
+    </script>
+    }
+}
+
+<script>
+    function IsFormValid() {
+        var isTrue = true;
+        //debugger;
+        if (!$("#frmReg1").valid()) {
+            isTrue = false;
+        }
+        return isTrue;
+    }
+</script>

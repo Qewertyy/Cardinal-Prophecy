@@ -1,0 +1,99 @@
+﻿@model HeartAttackApp.Models.RiskFactorCalculation
+@{
+    ViewBag.Title = "Prediction Results";
+}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    //$(function () {
+    //    $("#btnSubmit").click(function () {
+    //        $("input[name='GridHtml']").val($("#Grid").html());
+    //    });
+    //});
+
+
+    function printDiv() {
+        window.frames["print_frame"].document.body.innerHTML = document.getElementById("Grid").innerHTML;
+        window.frames["print_frame"].window.focus();
+        window.frames["print_frame"].window.print();
+        event.preventDefault();
+    }
+    //@@media print {
+    //  * {
+    //        display: none;
+    //    }
+    //    #Grid {
+    //        display: block;
+    //    }
+    //}
+</script>
+<style>
+    .container > table > thead> tr > td {
+        background-color: #B8DBFD;
+        border: 1px solid #ccc;
+    }
+    /* CSS */
+    .button-24 {
+        background: #FF323A;
+        border: 1px solid #FF323A;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 16px;
+        min-height: 40px;
+        outline: 0;
+        padding: 12px 14px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+    }
+
+        .button-24:hover,
+        .button-24:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: #FF4742;
+        }
+
+        .button-24:active {
+            opacity: .5;
+        }
+</style>
+<div class="container">
+    <div id="Grid">
+        <table class="table table-bordered" width="100%">
+            <thead><tr>
+                    <th style="border: 2px solid #ccc;">Prediction Result</th>
+            </tr>
+                <tr>
+                    <td style="width:120px;border: 2px solid #ccc;">Blood Pressure</td>
+                    <td style="width:120px;border: 2px solid #ccc;">Cholestrol Level</td>
+                    <td style="width:120px;border: 2px solid #ccc;">Sugar Level</td>
+                    <td style="width:120px;border: 2px solid #ccc;">Heart Attack Chances</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="width:120px;border: 2px solid #ccc">@Model.BpRiskPercent<a>%</a></td>
+                    <td style="width:120px;border: 2px solid #ccc">@Model.ColRiskPercent<a>%</a></td>
+                    <td style="width:120px;border: 2px solid #ccc">@Model.SugRiskPercent<a>%</a></td>
+                    <td style="width:120px;border: 2px solid #ccc">@Model.AvgRiskPercent<a>%</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <iframe name="print_frame" width="0" height="0" frameborder="0"></iframe>
+    </div>
+    <form>
+        @*<input type="hidden" name="GridHtml" />*@
+        <button id="btnSubmit" onclick="printDiv()" class="button-24">Download in PDF</button>
+    </form>
+</div>

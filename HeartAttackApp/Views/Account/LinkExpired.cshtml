@@ -1,0 +1,132 @@
+﻿@{
+    Layout = null;
+}
+<title>Reset Password Link Expired</title>
+<link rel="shortcut icon" href="/icon-modified.png" type="image/x-icon" />
+<style>
+    @@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+    body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            background: #eceff1;
+            font-family: Montserrat, sans-serif;
+        }
+    .container {
+        background: white;
+        height: auto;
+        width: 40vw;
+        padding: 1.5rem;
+        box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 0.5rem;
+        text-align: center;
+    }
+
+        .container h1 {
+            font-size: 1.25rem;
+            margin: 0;
+            margin-top: 1rem;
+            color: #FF323A;
+            opacity: 0;
+            transform: translateX(-0.1rem);
+            -webkit-animation: fadeIn 0.9s forwards 1.3s;
+            animation: fadeIn 0.9s forwards 1.3s;
+        }
+
+        .container p {
+            margin: 0;
+            margin-top: 0.5rem;
+            color: #546e7a;
+            opacity: 0;
+            transform: translateX(-0.1rem);
+            -webkit-animation: fadeIn 1s forwards 1.75s;
+            animation: fadeIn 1s forwards 1.75s;
+        }
+
+    @@media screen and (max-width: 768px) {
+        .container {
+            width: 50vw;
+        }
+    }
+
+    @@media screen and (max-width: 600px) {
+        .container {
+            width: 60vw;
+        }
+    }
+
+    @@media screen and (max-width: 500px) {
+        .container {
+            width: 80vw;
+        }
+    }
+
+    @@-webkit-keyframes fadeIn {
+        from {
+            transform: translateY(1rem);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0rem);
+            opacity: 1;
+        }
+    }
+
+    @@keyframes fadeIn {
+        from {
+            transform: translateY(1rem);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0rem);
+            opacity: 1;
+        }
+    }
+
+    .gobackbtn {
+        background: #FFF;
+        border: 1px solid #FF323A;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FF323A;
+        cursor: pointer;
+        display: inline-block;
+        font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 16px;
+        min-height: 40px;
+        outline: 0;
+        padding: 12px 14px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+        text-decoration:none;
+    }
+
+        .gobackbtn:hover,
+        .gobackbtn:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: #FFF;
+            background: #FF4742;
+        }
+
+        .gobackbtn:active {
+            opacity: .5;
+        }
+</style>
+<div class="container">
+    <h1>Link Expired</h1>
+    <p style ="padding-bottom:13px">Your password reset link has expired, if you still wish to reset your password please go to the reset password page</p>
+    <a class="gobackbtn" asp-action="ResetPassword">Reset Password ?</a>
+</div>

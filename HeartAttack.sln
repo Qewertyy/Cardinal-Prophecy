@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeartAttackApp", "HeartAttackApp\HeartAttackApp.csproj", "{C0E42559-B4DB-4B6A-A7E7-BB6732B3DA1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardinalPServices", "CardinalPServices\CardinalPServices.csproj", "{BEFF2F7A-EFD6-437C-9AEE-5CC1B7233C2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0E42559-B4DB-4B6A-A7E7-BB6732B3DA1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E42559-B4DB-4B6A-A7E7-BB6732B3DA1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E42559-B4DB-4B6A-A7E7-BB6732B3DA1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E42559-B4DB-4B6A-A7E7-BB6732B3DA1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEFF2F7A-EFD6-437C-9AEE-5CC1B7233C2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEFF2F7A-EFD6-437C-9AEE-5CC1B7233C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEFF2F7A-EFD6-437C-9AEE-5CC1B7233C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEFF2F7A-EFD6-437C-9AEE-5CC1B7233C2D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {831D3747-9F3F-43D0-8CB9-DC215102C415}
+	EndGlobalSection
+EndGlobal

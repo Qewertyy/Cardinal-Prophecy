@@ -1,0 +1,160 @@
+﻿@model CardinalPServices.ModelData.UserList
+@using HeartAttackApp.Helper;
+@using Microsoft.AspNetCore.Mvc;
+@using System.Web.Mvc.Html;
+@using System.Web
+@{
+    ViewBag.Title = "Users";
+}
+<style>
+
+    /* CSS */
+    .button-24 {
+        background: #FF323A;
+        border: 1px solid #FF323A;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 16px;
+        min-height: 40px;
+        outline: 0;
+        padding: 12px 14px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+    }
+
+        .button-24:hover,
+        .button-24:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: #FF4742;
+        }
+
+        .button-24:active {
+            opacity: .5;
+        }
+</style>
+
+@{
+    if (TempData["Message"] != null)
+    {
+    <script>
+                                        alert('@TempData["Message"]');
+    </script>
+    }
+
+}
+<br />
+<div>
+    <a class="button-24" style="text-decoration:none" asp-controller="Account" asp-action="AddAdmin">Add Admin</a>
+</div>
+<br />
+<div>
+    <table id="TblHistory" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <tr>
+                <td>
+                    UserID
+                </td>
+                <td>
+                    User Name
+                </td>
+                <td>
+                    Email ID
+                </td>
+                <td>
+                    Designation
+                </td>
+                <td>
+                    Created By
+                </td>
+                <td>
+                    Created At
+                </td>
+                <td>
+                    Action
+                </td>
+            </tr>
+        </thead>
+
+        @if (Model.userList.Count() > 0)
+        {
+            foreach (var item in Model.userList)
+            {
+                <tr>
+                    <td>
+                        @item.UserID
+                    </td>
+                    <td>
+                        @item.UserName
+                    </td>
+                    <td>
+                        @item.EmailID
+                    </td>
+                    <td>
+                        @if (item.UserID == 2)
+                        {
+                            <p>SuperAdmin</p>
+                        }
+                        else{
+                            @item.Role
+                        }
+                    </td>
+                    <td>
+                        @item.CreatedBy
+                    </td>
+                    <td>
+                       @Common.GetMdyToDmy(@item.CreatedAt)
+                    </td>
+                    <td>
+                        @{ViewBag.UserID = @item.UserID;
+                        ViewBag.Role = @item.Role;}
+                        @if (item.UserID!=2)
+                        {
+                            
+                            int? particularuserid = item.UserID;
+                            <a asp-action="DeleteUser" asp-route-UserID="@Encryption.Encrypt(particularuserid.ToString())" class="button-24" style="text-decoration:none;">Delete User</a>
+                        }
+                        else{
+                            <p>N/A</p>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        var iGridHeight = $(window).height() - 500;
+        //  debugger;
+        $("#TblHistory").DataTable({
+            scrollY: iGridHeight,
+            columnDefs: [{
+                orderable: false,
+                className: 'select-checkbox',
+                //targets: [0, 2]
+            }],
+            select: {
+                style: 'os',
+                selector: 'td:first-child',
+            },
+            order: [
+                [1, 'asc'],
+            ]
+        });
+        $('.dataTables_scrollBody').height('auto');
+    });
+</script>

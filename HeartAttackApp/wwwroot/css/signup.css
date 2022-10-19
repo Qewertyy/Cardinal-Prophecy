@@ -1,0 +1,80 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.mainL {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+.logo {
+    width: 50px;
+}
+
+.formL {
+    width: 300px;
+    height: 300px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0.1rem;
+}
+
+.titleL {
+    font-size: 1.5rem;
+}
+
+.inputL {
+    width: 240px;
+    height: 40px;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+::placeholder {
+    opacity: 50%;
+}
+
+
+.signinbtn {
+    width: 260px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    background: #3B9AE1;
+    color: white;
+}
+
+.forgett {
+    font-size: 0.8rem;
+    opacity: 50%;
+    font-weight: 500;
+}
+
+.dontHA {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 70%;
+}
+
+.createAbtn {
+    background: white;
+    width: 250px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}

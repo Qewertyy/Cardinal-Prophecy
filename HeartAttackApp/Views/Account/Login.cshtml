@@ -1,0 +1,147 @@
+﻿@model HeartAttackApp.Models.LoginModel
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <title>Login - Cardinal Prophecy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/js/jquery.js" asp-append-version="true"></script>
+    <script src="~/js/bootstrap.min.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.1/css/all.min.css" integrity="sha512-9my9Mb2+0YO+I4PUCSwUYO7sEK21Y0STBAiFEYoWtd2VzLEZZ4QARDrZ30hdM1GlioHJ8o8cWQiy8IAb1hy/Hg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+    <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="shortcut icon" href="../icon-modified.png" type="image/x-icon" />
+</head>
+<style>
+    .forgotbtnhover:hover {
+        text-decoration: underline #FF323A;
+    }
+
+    .button-24 {
+        background: #FF323A;
+        border: 1px solid #FF323A;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 16px;
+        min-height: 40px;
+        outline: 0;
+        padding: 12px 14px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+    }
+
+        .button-24:hover,
+        .button-24:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: #FF4742;
+        }
+
+        .button-24:active {
+            opacity: .5;
+        }
+</style>
+@{
+    if (TempData["Message"] != null)
+    {
+    <script>
+                    alert('@TempData["Message"]');
+    </script>
+    }
+}
+<body class="bg-body-img">
+
+    <div class="container-fluid backdrop-blur">
+        <div class="container">
+            <div class="row align-items-center card-wraper">
+                <div class="col-md-12">
+
+                    <div class="row">
+                        <div class="col-lg-8 px-md-5 px-4 py-4 d-flex flex-column ">
+                            <div class="pl-lg-5 pb-md-5 mt-3">
+                                <img src="../BG.png" class="img-fluid mb-2" width="125%" />
+
+                            </div>
+                        </div>
+                        <div id="Login" class="col-lg-4 py-5 px-4 bg-white login-card" style="background-color:black;">
+                            <h3 style="text-align:center; font-family:Verdana;">Welcome User!</h3>
+                            <form method="post" asp-action="Login" id="frmLogin">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group" style="margin-top:40px;">
+                                    <input type="text" class="form-control" asp-for="EmailID" name="EmailID" id="InputEmail" placeholder="Email ID">
+                                    <span style="text-decoration-color:red; z-index:1;" asp-validation-for="EmailID" class="text-danger"></span>
+                                </div>
+                                <br />
+                                <div class="form-group password">
+                                    <input type="password" asp-for="UserPassword" class="form-control password" id="inputpwd" placeholder="Password">
+                                    <span asp-validation-for="UserPassword" class="text-danger" style="z-index:1"></span>
+                                    <a href="javascript:void(0)" class="show_password" id="confirmPasswordEye"><i class="fa fa-eye prefix"></i></a>
+                                </div>
+                                <input type="submit" id="btnLogin" onclick="return IsFormValid()" class="btn button-24 mt-md-3 w-100" value="Sign In" />
+                            </form>
+                            <br />
+                            <p class="text-center"><a asp-action="ResetPassword" class="forgotbtnhover"> Forgot Password? </a></p>
+
+                            <div class="mb-3 pt-lg-4">
+                                <hr data-content="" class="hr-text">
+                            </div>
+                            <p class="text-center">Haven't Registered Yet?</p>
+                            <p id="LoginRegister" class="text-center register-link"><a class="forgotbtnhover" asp-action="SignUp"> Register Now </a></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function IsFormValid() {
+            var isTrue = true;
+            debugger;
+            if (!$("#frmLogin").valid()) {
+                isTrue = false;
+            }
+            return isTrue;
+        }
+        $(".show_password").click(function() {
+            debugger;
+
+            $(this).find('i').toggleClass("fa-eye-slash");
+            var input = $(this).parent().find('input');
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+
+        $(document).ready(function() {
+            $("#Registraion").hide();
+            $("#LoginRegister").click(function() {
+                $("#Login").hide();
+                $("#Registraion").show();
+
+            });
+        });
+    </script>
+</body>
+</html>
